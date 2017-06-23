@@ -130,6 +130,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8998 \
+    libcurl \
+    libgnsspps
+
 # IPA Manager
 PRODUCT_PACKAGES += \
     ipacm \
