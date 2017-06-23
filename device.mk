@@ -123,6 +123,9 @@ PRODUCT_PACKAGES += \
     memtrack.msm8998 \
     libtinyxml
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
+
 # IPA Manager
 PRODUCT_PACKAGES += \
     ipacm \
