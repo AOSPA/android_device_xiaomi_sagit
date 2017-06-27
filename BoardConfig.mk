@@ -156,6 +156,9 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 
+# Filesystem
+TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(PLATFORM_PATH)/android_filesystem_config.h
+
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
