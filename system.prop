@@ -1,12 +1,12 @@
 # Audio
 af.fast_track_multiplier=1
 audio_hal.period_size=192
-audio.adm.buffering.ms
+audio.adm.buffering.ms=3
 audio.deep_buffer.media=true
 audio.dolby.ds2.enabled=false
 audio.dolby.ds2.hardbypass=false
 audio.heap.size.multiplier=7
-audio.noisy.broadcast.delay=600
+audio.noisy.broadcast.delay=300
 audio.offload.buffer.size.kb=32
 audio.offload.gapless.enabled=true
 audio.offload.multiaac.enable=true
@@ -48,5 +48,112 @@ ro.btconfig.dev=/dev/ttyHS0
 ro.btconfig.if=uart
 ro.btconfig.vendor=qcom
 
-# Display
+# Camera
+camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.miui.cit
+persist.camera.gyro.disable=0
+persist.camera.xm.green.r=0.97
+persist.camera.xm.green.b=0.96
+vidc.enc.dcvs.extra-buff-count=2
+
+# CNE
+persist.cne.feature=1
+
+# Data modules
+persist.data.iwlan.enable=true
+persist.data.mode=concurrent
+persist.data.netmgrd.qos.enable=true
+ro.use_data_netmgrd=true
+
+# Display (Qualcomm AD)
+ro.qualcomm.cabl=0
+ro.qcom.ad=1
+ro.qcom.ad.calib.data=/system/etc/calib.cfg
+ro.qcom.ad.sensortype=2
+
+# Display feature (bit0-ColorPrefer bit1-EyeCare bit2-AD bit3-CE bit4-CABC bit5-SRGB night_mode_2.0)
+ro.eyecare.brightness.threshold=7
+ro.eyecare.brightness.level=2
+ro.sys.display.support=63
+
+# DRM
+drm.service.enabled=true
+
+# FRP
+ro.frp.pst=/dev/block/bootdevice/by-name/frp
+
+# Graphics
+debug.gralloc.enable_fb_ubwc=1
+debug.sf.hw=1
+dev.pm.dyn_samplingrate=1
+persist.demo.hdmirotationlock=false
+persist.hwc.enable_vds=1
+persist.sys.wfd.virtual=0
+ro.opengles.version=196610
 ro.sf.lcd_density=480
+sdm.debug.disable_partial_split=1
+
+# GPS
+persist.gps.qc_nlp_in_use=1
+persist.loc.nlp_name=com.qualcomm.location
+ro.gps.agps_provider=1
+
+# IMS
+persist.radio.NO_STAPA=1
+persist.radio.VT_CAM_INTERFACE=1
+persist.radio.VT_HYBRID_ENABLE=1
+
+# Perf
+ro.core_ctl_min_cpu=2
+ro.core_ctl_max_cpu=4
+ro.sys.fw.bg_apps_limit=60
+ro.vendor.extension_library=libqti-perfd-client.so
+
+# Radio
+DEVICE_PROVISIONED=1
+rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
+ril.subscription.types=NV,RUIM
+ro.telephony.call_ring.multiple=false
+ro.telephony.default_cdma_sub=0
+ro.telephony.default_network=22,22
+persist.data.qmi.adb_logmask=0
+persist.radio.apm_sim_not_pwdn=1
+persist.radio.custom_ecc=1
+persist.radio.dynamic_sar=false
+persist.radio.force_on_dc=true
+persist.radio.multisim.config=dsds
+persist.radio.rat_on=combine
+persist.radio.sib16_support=1
+persist.sys.labtest_flag=false
+
+# RmNet Data
+persist.rmnet.data.enable=true
+persist.data.wda.enable=true
+persist.data.df.dl_mode=5
+persist.data.df.ul_mode=5
+persist.data.df.agg.dl_pkt=10
+persist.data.df.agg.dl_size=4096
+persist.data.df.mux_count=8
+persist.data.df.iwlan_mux=9
+persist.data.df.dev_name=rmnet_usb0
+
+# Sensors
+persist.sys.sensors.cfos=false
+persist.sys.sensors.pug=false
+persist.sys.sensors.spg=false
+ro.qti.sensors.dev_ori=false
+ro.qti.sensors.dpc=true
+ro.qti.sensors.iod=true
+ro.qti.sensors.mot_detect=true
+ro.qti.sensors.multishake=true
+ro.qti.sensors.pmd=true
+ro.qti.sensors.sta_detect=true
+ro.qti.sensors.taptap_gesture=true
+
+# TimeService
+persist.timed.enable=true
+
+# USB
+sys.usb.controller=a800000.dwc3
+
+# Wifi
+wifi.interface=wlan0
