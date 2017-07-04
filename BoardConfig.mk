@@ -55,6 +55,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET := 0x02000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_CONFIG := sagit_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8998
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
@@ -223,9 +224,13 @@ HOSTAPD_VERSION := VER_0_8_X
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
-WIFI_DRIVER_MODULE_NAME := "qca_cld3_wlan"
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/qca_cld3/qca_cld3_wlan.ko"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/xiaomi/sagit/BoardConfigVendor.mk
+
+# Configuration to use prebuilt kernel
+BOARD_CUSTOM_BOOTIMG_MK := $(PLATFORM_PATH)/mkbootimg.mk
+TARGET_PREBUILT_KERNEL := device/xiaomi/sagit-prebuilt/kernel
+WIFI_DRIVER_MODULE_NAME := "wlan"
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
