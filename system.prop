@@ -152,8 +152,5 @@ ro.qti.sensors.taptap_gesture=true
 # TimeService
 persist.timed.enable=true
 
-# USB
-sys.usb.controller=a800000.dwc3
-
 # Wifi
 wifi.interface=wlan0
