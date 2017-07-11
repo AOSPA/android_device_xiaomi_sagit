@@ -147,6 +147,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    fingerprintd
+
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
@@ -168,9 +172,13 @@ PRODUCT_COPY_FILES += \
 
 # Input
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/idc/uinput-goodix.idc:system/usr/idc/uinput-goodix.idc
+
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fts.kl:system/usr/keylayout/fts.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl
+    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl \
+    $(LOCAL_PATH)/keylayout/uinput-goodix.kl:system/usr/keylayout/uinput-goodix.kl
 
 # IPA Manager
 PRODUCT_PACKAGES += \
