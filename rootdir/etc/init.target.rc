@@ -82,6 +82,11 @@ on post-fs
     start qseecomd
     exec - root root root -- /system/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
+    # Write fs to /cache/recovery
+    setprop cache.trigger 1
+
+on property:cache.trigger=1 && property:persist.radio.goldencopy_flag=true
+    write /cache/recovery/efs 1
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
@@ -156,11 +161,52 @@ on boot
    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
    chmod 0600 /data/fpc/calibration_image.pndat
 
+    mkdir /dev/cpuctl/fg_service
+    chown system system /dev/cpuctl/fg_service/tasks
+    chmod 0666 /dev/cpuctl/fg_service/tasks
+    write /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us 300000
+    write /dev/cpuctl/fg_service/cpu.shares 256
+    write /dev/cpuctl/fg_service/cpu.rt_runtime_us 400000
+    write /dev/cpuctl/fg_service/cpu.rt_period_us 1000000
+
+    mkdir /dev/cpuctl/fg_service/fg_limited
+    chown system system /dev/cpuctl/fg_service/fg_limited/tasks
+    chmod 0666 /dev/cpuctl/fg_service/fg_limited/tasks
+    write /dev/cpuctl/fg_service/fg_limited/cpu.shares 256
+    write /dev/cpuctl/fg_service/fg_limited/cpu.rt_runtime_us 400000
+    write /dev/cpuctl/fg_service/fg_limited/cpu.rt_period_us 1000000
+
 # access permission for Speaker SmartPA
     chmod 0666 /dev/i2c-10
 
     chmod 0777 /dev/elliptic0
     chmod 0777 /dev/elliptic1
+
+    # LEDs
+    chown system system /sys/class/leds/button-backlight1/brightness
+    chown system system /sys/class/leds/white/brightness
+    chown system system /sys/class/leds/white/blink
+
+on late-init
+    # set vr related cpuset
+    mkdir /dev/cpuset/vr
+    write /dev/cpuset/vr/mems 0
+
+    # change permissions for vr cpusets as we'll touch at runtime
+    chown system system /dev/cpuset/foreground/boost/cpus
+    chown system system /dev/cpuset/foreground/cpus
+    chown system system /dev/cpuset/vr
+    chown system system /dev/cpuset/vr/cpu_exclusive
+    chown system system /dev/cpuset/vr/cpus
+    chown system system /dev/cpuset/vr/tasks
+    chown system system /dev/cpuset/top-app/cpus
+    chown system system /dev/cpuset/top-app/boost
+    chown system system /dev/cpuset/top-app/boost/tasks
+    chown system system /dev/cpuset/top-app/boost/cpus
+    chmod 0664 /dev/cpuset/vr/cpu_exclusive
+    chmod 0664 /dev/cpuset/vr/cpus
+    chmod 0664 /dev/cpuset/vr/tasks
+    chmod 0664 /dev/cpuset/top-app/boost/tasks
 
 #Peripheral manager
 service per_mgr /system/bin/pm-service
@@ -444,3 +490,9 @@ on property:persist.audio.plug_times=*
 
 on property:ro.boot.fpsensor=*
    start fidoca
+
+service nv_mac /system/bin/nv_mac
+   class main
+   user root
+   group net_raw
+   oneshot
