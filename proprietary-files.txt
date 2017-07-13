@@ -51,6 +51,10 @@ etc/acdbdata/Forte/Forte_Headset_cal.acdb
 etc/acdbdata/Forte/Forte_Speaker_cal.acdb
 etc/acdbdata/Forte/Forte_workspaceFile.qwsp
 
+# Audio firmware
+etc/firmware/tfa98xx_aac.cnt
+etc/firmware/tfa98xx_ssi.cnt
+
 # Audio libraries
 lib/soundfx/libdirac.so
 vendor/lib64/soundfx/libqcbassboost.so
@@ -759,12 +763,13 @@ vendor/lib64/libloc_ext.so
 vendor/lib64/liblocationservice_glue.so
 vendor/lib64/liblocationservice.so
 vendor/lib64/liblowi_client.so
+vendor/lib64/liblowi_wifihal_nl.so
+vendor/lib64/liblowi_wifihal.so
 vendor/lib64/libquipc_os_api.so
 vendor/lib64/libulp2.so
 vendor/lib64/libxt_native.so
 vendor/lib64/libxtadapter.so
 vendor/lib64/libxtwifi_ulp_adaptor.so
-
 
 # Graphics
 vendor/lib64/egl/eglSubDriverAndroid.so
