@@ -113,6 +113,10 @@ persist.radio.NO_STAPA=1
 persist.radio.VT_CAM_INTERFACE=1
 persist.radio.VT_HYBRID_ENABLE=1
 
+# NFC
+ro.nfc.port=I2C
+persist.nfc.smartcard.config=SIM1,eSE1
+
 # Perf
 ro.core_ctl_min_cpu=2
 ro.core_ctl_max_cpu=4

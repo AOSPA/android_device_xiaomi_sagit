@@ -948,6 +948,9 @@ vendor/lib/libQtiTether.so
 vendor/lib/libconnctrl.so
 vendor/lib/libcsm_data.so
 
+# NFC firmware
+vendor/firmware/libpn553_fw.so
+
 # Perf
 bin/energy-awareness
 bin/iop
