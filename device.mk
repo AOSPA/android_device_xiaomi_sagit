@@ -196,6 +196,10 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8998
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \

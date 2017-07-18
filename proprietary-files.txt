@@ -895,10 +895,6 @@ etc/firmware/ipa_fws.mdt
 vendor/lib64/hw/keystore.msm8998.so
 vendor/lib/hw/keystore.msm8998.so
 
-# Lights
-lib64/hw/lights.msm8998.so
-lib/hw/lights.msm8998.so
-
 # Listen
 vendor/lib/hw/sound_trigger.primary.msm8998.so
 vendor/lib/libsmwrapper.so
