@@ -37,6 +37,8 @@
 #ifndef DEFAULT_LOW_PERSISTENCE_MODE_BRIGHTNESS
 #define DEFAULT_LOW_PERSISTENCE_MODE_BRIGHTNESS 0x80
 #endif
+#define DEFAULT_MAX_BRIGHTNESS 255
+int max_brightness;
 
 /******************************************************************************/
 
@@ -61,6 +63,9 @@ char const*const WHITE_LED_FILE
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
+
+char const*const LCD_MAX_BRIGHTNESS_FILE
+        = "/sys/class/leds/lcd-backlight/max_brightness";
 
 char const*const BUTTON_FILE
         = "/sys/class/leds/button-backlight/brightness";
@@ -91,6 +96,38 @@ void init_globals(void)
 {
     // init the mutex
     pthread_mutex_init(&g_lock, NULL);
+}
+
+static int read_int(char const* path)
+{
+    int fd, len;
+    int num_bytes = 10;
+    char buf[11];
+    int retval;
+
+    fd = open(path, O_RDONLY);
+    if (fd < 0) {
+        ALOGE("%s: failed to open %s\n", __func__, path);
+        goto fail;
+    }
+
+    len = read(fd, buf, num_bytes - 1);
+    if (len < 0) {
+        ALOGE("%s: failed to read from %s\n", __func__, path);
+        goto fail;
+    }
+
+    buf[len] = '\0';
+    close(fd);
+
+    // no endptr, decimal base
+    retval = strtol(buf, NULL, 10);
+    return retval == 0 ? -1 : retval;
+
+fail:
+    if (fd >= 0)
+        close(fd);
+    return -1;
 }
 
 static int
@@ -139,6 +176,14 @@ set_light_backlight(struct light_device_t* dev,
         state->brightnessMode == BRIGHTNESS_MODE_LOW_PERSISTENCE;
     if(!dev) {
         return -1;
+    }
+
+    // If max panel brightness is not the default (255),
+    // apply linear scaling across the accepted range.
+    if (max_brightness != DEFAULT_MAX_BRIGHTNESS) {
+        int old_brightness = brightness;
+        brightness = brightness * max_brightness / DEFAULT_MAX_BRIGHTNESS;
+        ALOGV("%s: scaling brightness %d => %d\n", __func__, old_brightness, brightness);
     }
 
     pthread_mutex_lock(&g_lock);
@@ -342,6 +387,12 @@ static int open_lights(const struct hw_module_t* module, char const* name,
     else
         return -EINVAL;
 
+    max_brightness = read_int(LCD_MAX_BRIGHTNESS_FILE);
+    if (max_brightness < 0) {
+        ALOGE("%s: failed to read max panel brightness, fallback to 255!\n", __func__);
+        max_brightness = DEFAULT_MAX_BRIGHTNESS;
+    }
+
     pthread_once(&g_init, init_globals);
 
     struct light_device_t *dev = malloc(sizeof(struct light_device_t));
@@ -373,7 +424,7 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "lights Module",
+    .name = "MSM8998 Lights Module",
     .author = "Google, Inc.",
     .methods = &lights_module_methods,
 };
