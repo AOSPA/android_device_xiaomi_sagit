@@ -486,7 +486,6 @@ on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
     start wcnss-service
 
-
 service cnd /system/bin/cnd
     class main
     socket cnd stream 660 root inet

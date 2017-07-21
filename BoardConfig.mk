@@ -169,6 +169,9 @@ TARGET_HW_DISK_ENCRYPTION := true
 # Filesystem
 TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(PLATFORM_PATH)/android_filesystem_config.h
 
+# Gesture
+TARGET_TAP_TO_WAKE_NODE := "/data/tp/wake_gesture"
+
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 

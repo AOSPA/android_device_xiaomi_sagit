@@ -135,7 +135,8 @@ PRODUCT_PACKAGES += \
     init.panel_info.sh \
     init.qcom.bt.sh \
     init.qcom.post_boot.sh \
-    init.qti.qseecomd.sh
+    init.qti.qseecomd.sh \
+    tp_node.sh
 
 # Common init scripts
 PRODUCT_PACKAGES += \

@@ -496,3 +496,9 @@ service nv_mac /system/bin/nv_mac
    user root
    group net_raw
    oneshot
+
+service tp_node /system/bin/sh /tp_node.sh
+    class main
+    user root
+    group root
+    oneshot
