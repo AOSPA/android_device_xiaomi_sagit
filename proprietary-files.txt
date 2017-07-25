@@ -737,14 +737,15 @@ bin/xtwifi-client
 bin/xtwifi-inet-agent
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.xml
+etc/permissions/com.qualcomm.location.vzw_library.xml
 etc/permissions/izat.xt.srv.xml
 etc/cacert_location.pem
 etc/xtra_root_cert.pem
 -framework/com.qti.location.sdk.jar
+framework/com.qualcomm.location.vzw_library.jar
 framework/izat.xt.srv.jar
 -lib64/libloc_api_v02.so
 lib64/libloc_ds_api.so
-lib64/libvehiclenetwork-native.so
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
 vendor/bin/slim_daemon
 vendor/lib64/hw/flp.default.so
@@ -824,7 +825,7 @@ vendor/lib/libllvm-qcom.so
 vendor/lib/libllvm-qgl.so
 vendor/lib/libmm-disp-apis.so
 vendor/lib/libmm-qdcm.so
-vendor/lib64/libqseed3.so
+vendor/lib/libqseed3.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libsd_sdk_display.so
@@ -852,10 +853,12 @@ bin/imscmservice
 bin/imsdatadaemon
 bin/imsqmidaemon
 etc/permissions/imscm.xml
+etc/permissions/qti-vzw-ims-internal.xml
 framework/imscmlibrary.jar
 framework/rcsimssettings.jar
 -vendor/app/ims/ims.apk
 -vendor/app/imssettings/imssettings.apk
+vendor/framework/qti-vzw-ims-internal.jar
 vendor/lib64/lib-dplmedia.so
 vendor/lib64/lib-ims-rcscmjni.so
 vendor/lib64/lib-imsSDP.so
@@ -901,22 +904,37 @@ vendor/lib/libsmwrapper.so
 
 # Media
 lib64/libOmxVpp.so
+lib64/libstagefright_soft_flacdec.so
 lib64/libvpplibrary.so
 lib/libOmxVpp.so
+lib/libstagefright_soft_flacdec.so
 lib/libvpplibrary.so
+vendor/lib64/libavenhancements.so
+vendor/lib64/libExtendedExtractor.so
+vendor/lib64/libFlacSwDec.so
 vendor/lib64/libI420colorconvert.so
-vendor/lib64/libOmxAacDec.so
-vendor/lib64/libOmxEvrcDec.so
-vendor/lib64/libOmxQcelp13Dec.so
 vendor/lib64/libmm-color-convertor.so
 vendor/lib64/libmmosal.so
+vendor/lib64/libmmparser.so
+vendor/lib64/libmmparser_lite.so
+vendor/lib64/libOmxAacDec.so
+vendor/lib64/libOmxEvrcDec.so
+vendor/lib64/libOmxMux.so
+vendor/lib64/libOmxQcelp13Dec.so
 vendor/lib64/libvpphvx.so
+vendor/lib/libavenhancements.so
+vendor/lib/libExtendedExtractor.so
+vendor/lib/libFlacSwDec.so
 vendor/lib/libI420colorconvert.so
-vendor/lib/libOmxAacDec.so
-vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
+vendor/lib/libmmparser.so
+vendor/lib/libmmparser_lite.so
+vendor/lib/libomx-dts.so
+vendor/lib/libOmxAacDec.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxMux.so
+vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libvpphvx.so
 vendor/lib/libvqzip.so
 
@@ -945,11 +963,13 @@ vendor/lib64/libqti-iop.so
 vendor/lib64/libqti-perfd-client.so
 vendor/lib64/libqti-util.so
 vendor/lib64/libqti-utils.so
+vendor/lib64/libqti_performance.so
 vendor/lib/libqti-iop-client.so
 vendor/lib/libqti-iop.so
 vendor/lib/libqti-perfd-client.so
 vendor/lib/libqti-util.so
 vendor/lib/libqti-utils.so
+vendor/lib/libqti_performance.so
 
 # Peripheral manager
 bin/pm-proxy
@@ -1048,29 +1068,17 @@ vendor/qcril.db
 
 # Sensors
 bin/sensors.qcom
-etc/permissions/com.xiaomi.sensor.xml
 etc/sensors/hals.conf
 etc/sensors/sensor_def_qcomdev.conf
-framework/com.xiaomi.sensor.jar
-lib64/libcalapi.so
-lib64/libsensor_cal.so
-lib64/libsensor_calJNI.so
-lib/libcalapi.so
-lib/libsensor_cal.so
-lib/libsensor_calJNI.so
 vendor/lib64/hw/activity_recognition.msm8998.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
-vendor/lib64/libsensor_test.so
 vendor/lib64/libsensor_user_cal.so
-vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.ssc.so
 vendor/lib/hw/activity_recognition.msm8998.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
-vendor/lib/libsensor_test.so
 vendor/lib/libsensor_user_cal.so
-vendor/lib/sensor_calibrate.so
 vendor/lib/sensors.ssc.so
 
 # Thermal
@@ -1097,4 +1105,5 @@ vendor/lib64/libqvop-service.so
 vendor/lib/libqvop-service.so
 
 # WiFi
+bin/cnss_diag
 bin/cnss-daemon
