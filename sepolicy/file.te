@@ -1,0 +1,5 @@
+type dsp_file, fs_type, contextmount_type;
+type goodix_data_file, file_type;
+type netmgr_data_file, file_type;
+type thermal_data_file, file_type;
+type tp_data_file, file_type;
