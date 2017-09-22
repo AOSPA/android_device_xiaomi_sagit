@@ -263,6 +263,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libjson
 
+# QPerformance
+PRODUCT_BOOT_JARS += \
+    QPerformance
+
 # RIL
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
