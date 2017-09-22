@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2012-2013, 2016, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2013, 2016-2017, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -25,6 +25,33 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+
+function set_rt_bandwidth()
+{
+        # The default RT bandwidth setttings for bg_non_interactive cgroup
+        # is 10 msec/1 sec. There should not be any active RT tasks in this
+        # cgroup, so the limited bandwidth is not a concern. But the tasks
+        # in this cgroup can be boosted to RT priority when they acquire a
+        # RT mutex. The RT throttling is exempted for boosted tasks, but when
+        # a kernel debug feature is turned on, we hit panic. We can opt out
+        # of  panic when a RT runqueue has boosted tasks, but that would mean
+        # a task acquiring a RT mutex can run for a very long time without
+        # getting noticed. Instead set the bg_non_interactive cgroup RT
+        # bandwidth settings to same as the root cgroup settings.
+
+        if [ ! -f /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us ]; then
+              return
+        fi
+
+        if [ ! -f /dev/cpuctl/cpu.rt_runtime_us ]; then
+              return
+        fi
+
+        rt_runtime=`cat /dev/cpuctl/cpu.rt_runtime_us`
+        echo $rt_runtime > /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us
+}
+
+set_rt_bandwidth
 
 # Configure qcom core control
 echo 2 > /sys/devices/system/cpu/cpu4/core_ctl/min_cpus

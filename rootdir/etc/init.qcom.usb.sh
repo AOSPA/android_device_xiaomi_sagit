@@ -130,7 +130,7 @@ case "$usb_config" in
 	          "Dragon" | "SBC")
 	              setprop persist.sys.usb.config diag,adb
 	          ;;
-	          "SAGIT" | "CENTAUR" | "CHIRON")
+	          "SAGIT" | "CENTAUR" | "CHIRON" | "CHIRON_S")
 	              if [ -z "$debuggable" -o "$debuggable" = "1"  ]; then
 	                  setprop persist.sys.usb.config mtp,adb
 	              else

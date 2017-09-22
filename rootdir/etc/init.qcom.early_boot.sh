@@ -100,6 +100,7 @@ function setHDMIPermission() {
    set_perms $file/pa system.graphics 0664
    set_perms $file/cec/wr_msg system.graphics 0600
    set_perms $file/hdcp/tp system.graphics 0664
+   set_perms $file/hdcp2p2/min_level_change system.graphics 0660
    set_perms $file/hdmi_audio_cb audioserver.audio 0600
    ln -s $dev_file $dev_gfx_hdmi
 }
@@ -164,4 +165,24 @@ done
 if [ -f /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies ]; then
     gpu_freq=`cat /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies` 2> /dev/null
     setprop ro.gpu.available_frequencies "$gpu_freq"
+fi
+
+# set kgsl sysfs nodes permissions to allow adjustment by VR service
+file=/sys/devices/virtual/workqueue/kgsl-events/
+if [ -f "$file/cpumask" ]; then
+    set_perms $file/cpumask system.graphics 0664
+fi
+if [ -f "$file/nice" ]; then
+    set_perms $file/nice system.graphics 0664
+fi
+file=/sys/devices/virtual/workqueue/kgsl-workqueue/
+if [ -f "$file/cpumask" ]; then
+    set_perms $file/cpumask system.graphics 0664
+fi
+if [ -f "$file/nice" ]; then
+    set_perms $file/nice system.graphics 0664
+fi
+file=/sys/class/kgsl/kgsl-3d0/
+if [ -f "$file/pwrscale" ]; then
+    set_perms $file/pwrscale system.graphics 0664
 fi
