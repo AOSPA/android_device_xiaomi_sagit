@@ -127,6 +127,14 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libbt-vendor
+
+# Camera
+PRODUCT_PACKAGES += \
+    org.codeaurora.camera
+
 # Common config scripts
 PRODUCT_PACKAGES += \
     init.leds.sh \
@@ -151,6 +159,7 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    copybit.msm8998 \
     gralloc.msm8998 \
     hwcomposer.msm8998 \
     memtrack.msm8998 \
@@ -261,6 +270,7 @@ PRODUCT_PACKAGES += \
 
 # QMI
 PRODUCT_PACKAGES += \
+    libtinyxml2 \
     libjson
 
 # QPerformance
@@ -280,7 +290,6 @@ PRODUCT_PACKAGES += \
 # WiFi
 PRODUCT_PACKAGES += \
     libqsap_sdk \
-    libQWiFiSoftApCfg \
     libwpa_client \
     hostapd \
     wpa_supplicant \
