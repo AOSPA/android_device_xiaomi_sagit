@@ -291,6 +291,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     sensors.msm8998
 
+# Thermal
+PRODUCT_PACKAGES += \
+    thermal.msm8998
+
 # WiFi
 PRODUCT_PACKAGES += \
     libqsap_sdk \
