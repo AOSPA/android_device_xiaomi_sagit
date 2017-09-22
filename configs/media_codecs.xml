@@ -410,5 +410,4 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="OMX.ffmpeg.adpcm.decoder" type="audio/32KADPCM" />
     </Decoders>
     <Include href="media_codecs_google_video.xml" />
-    <Include href="media_codecs_ffmpeg.xml" />
 </MediaCodecs>
