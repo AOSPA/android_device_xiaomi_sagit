@@ -27,9 +27,9 @@ export DEVICE_BRINGUP_YEAR=2017
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-CM_ROOT="$MY_DIR"/../../..
+ROOT="$MY_DIR"/../../..
 
-HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+HELPER="$ROOT"/vendor/blobscript/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -59,13 +59,13 @@ fi
 if [ -n "$SETUP" ]; then
     if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
         # Initalize the helper for device
-        setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT" false false
+        setup_vendor "$DEVICE" "$VENDOR" "$ROOT" false false
         "$MY_DIR"/setup-makefiles.sh false
     fi
 else
     if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
         # Reinitialize the helper for device
-        setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT" false "$CLEANUP"
+        setup_vendor "$DEVICE" "$VENDOR" "$ROOT" false "$CLEANUP"
 
         extract "$MY_DIR"/../$DEVICE/proprietary-files.txt "$SRC"
     fi
