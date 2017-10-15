@@ -452,7 +452,7 @@ service irisd /system/bin/irisdaemon
     group camera system inet
 
 service display_count /system/bin/display_count
-    class main
+    class late_start
     user root
     group root
 

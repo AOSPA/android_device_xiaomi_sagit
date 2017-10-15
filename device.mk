@@ -181,8 +181,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8998 \
     libcurl \
-    libgnsspps \
-    libvehiclenetwork-native
+    libgnsspps
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/apdr.conf:system/vendor/etc/apdr.conf \

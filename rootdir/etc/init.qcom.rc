@@ -1078,6 +1078,7 @@ on charger
    wait /dev/block/bootdevice/by-name/system
    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
    setprop sys.usb.config adb
+   start leds-sh
 
 #add poweroffhandler
 service poweroffhandler /system/bin/poweroffhandler
