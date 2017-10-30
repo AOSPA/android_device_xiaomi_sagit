@@ -330,6 +330,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_BOOT_JARS += \
     QPerformance
 
+# QTI priv-app permissions
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
+
 # Renderscript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl

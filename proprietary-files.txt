@@ -1178,7 +1178,6 @@ vendor/lib/libvqzip.so
 vendor/lib/libOmxWmaDec.so
 
 # Misc
-etc/permissions/privapp-permissions-qti.xml
 etc/permissions/qti_libpermissions.xml
 
 # NFC firmware
