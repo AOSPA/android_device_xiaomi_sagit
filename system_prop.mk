@@ -161,6 +161,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.multisim.config=dsds \
     persist.radio.redir_party_num=1 \
     persist.radio.report_codec=1 \
+    persist.radio.schd.cache=3500 \
     persist.rild.nitz_plmn="" \
     persist.rild.nitz_long_ons_0="" \
     persist.rild.nitz_long_ons_1="" \
