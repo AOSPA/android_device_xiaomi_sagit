@@ -140,10 +140,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.leds.sh \
     init.panel_info.sh \
-    init.qcom.bt.sh \
     init.qcom.post_boot.sh \
-    init.qti.qseecomd.sh \
-    tp_node.sh
+    init.qti.qseecomd.sh
 
 # Common init scripts
 PRODUCT_PACKAGES += \
