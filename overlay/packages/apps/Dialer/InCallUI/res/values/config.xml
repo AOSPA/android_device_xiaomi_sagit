@@ -31,8 +31,5 @@
     <!-- Determines the maximum number of buttons visible on the call card.  Any buttons over this
          count are put into the overflow menu. -->
     <integer name="call_card_max_buttons">6</integer>
-
-    <!-- Config to enable call deflect or ECT with static number -->
-    <bool name="config_ims_call_deflect_static_number_enable">true</bool>
 </resources>
 
