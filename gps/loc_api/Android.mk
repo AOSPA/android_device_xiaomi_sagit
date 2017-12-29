@@ -23,7 +23,9 @@ QMI_BOARD_PLATFORM_LIST += sdm845
 QMI_BOARD_PLATFORM_LIST += msmpeafowl
 
 ifneq (,$(filter $(QMI_BOARD_PLATFORM_LIST),$(TARGET_BOARD_PLATFORM)))
+ifneq ($(QCPATH),)
 include $(call all-subdir-makefiles)
+endif #qcpath
 endif #is-board-platform-in-list
 
 # link gss.bxx files into /etc/firmware folder
