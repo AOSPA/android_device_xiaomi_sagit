@@ -132,7 +132,14 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
+    camera.device@1.0-impl \
+    camera.device@3.2-impl \
     org.codeaurora.camera
+
+PRODUCT_BOOT_JARS += \
+    com.qualcomm.qti.camera
 
 # Common config scripts
 PRODUCT_PACKAGES += \
@@ -154,30 +161,63 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     ueventd.qcom.rc
 
-# Display
+# Display/Graphics
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service \
+    android.hardware.configstore@1.0-service \
+    android.hardware.broadcastradio@1.0-impl \
     copybit.msm8998 \
     gralloc.msm8998 \
     hwcomposer.msm8998 \
+    libdisplayconfig \
+    libhwc2on1adapter \
+    libjson \
+    libtinyxml \
     memtrack.msm8998 \
-    libtinyxml
+    vendor.display.config@1.0 \
+    vendor.display.config@1.0_vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.0-service.widevine
+
 # Fingerprint
 PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.1 \
+    android.hardware.biometrics.fingerprint@2.1-service \
     fingerprintd
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
+
 # GPS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl-qti \
+    android.hardware.gnss@1.0-service-qti \
     gps.msm8998 \
     libcurl \
-    libgnsspps
+    libgnss \
+    libgnsspps \
+    liblocation_api
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
@@ -187,6 +227,16 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
     $(LOCAL_PATH)/gps/etc/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
+
+# Healthd
+PRODUCT_PACKAGES += \
+    android.hardware.health@1.0-impl \
+    android.hardware.health@1.0-convert \
+    android.hardware.health@1.0-service
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.manager@@1.0-java
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -218,6 +268,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.qcom
@@ -233,8 +288,14 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
+# Netutils
+PRODUCT_PACKAGES += \
+    libandroid_net \
+    netutils-wrapper-1.0
+
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl \
     com.android.nfc_extras \
     com.nxp.nfc.nq \
     libnqnfc-nci \
@@ -243,15 +304,21 @@ PRODUCT_PACKAGES += \
     NQNfcNci \
     nqnfcee_access.xml \
     nqnfcse_access.xml \
-    Tag
+    Tag \
+    vendor.nxp.hardware.nfc@1.0-impl \
+    vendor.nxp.hardware.nfc@1.0-service
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/nfc/libnfc-nxp_default.conf:system/etc/libnfc-nxp_default.conf
 
+PRODUCT_BOOT_JARS += \
+    com.nxp.nfc.nq
+
 # Omx
 PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0-impl \
     libc2dcolorconvert \
     libmm-omxcore \
     libOmxAacEnc \
@@ -265,16 +332,17 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service \
     power.msm8998
-
-# QMI
-PRODUCT_PACKAGES += \
-    libtinyxml2 \
-    libjson
 
 # QPerformance
 PRODUCT_BOOT_JARS += \
     QPerformance
+
+# Renderscript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -284,18 +352,33 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    sensors.msm8998
+    android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service
 
 # Thermal
 PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service \
     thermal.msm8998
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
 
 # VR
 PRODUCT_PACKAGES += \
+    android.hardware.vr@1.0-impl \
+    android.hardware.vr@1.0-service \
     vr.msm8998
 
 # WiFi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
     libqsap_sdk \
     libwpa_client \
     hostapd \
@@ -303,6 +386,7 @@ PRODUCT_PACKAGES += \
     hostapd.accept \
     hostapd.deny \
     p2p_supplicant_overlay.conf \
+    wificond \
     wpa_supplicant \
     wpa_supplicant.conf \
     wpa_supplicant_overlay.conf
