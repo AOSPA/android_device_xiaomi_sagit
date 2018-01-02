@@ -1,6 +1,0 @@
-allow qti_init_shell sensors_data_file:dir setattr;
-allow qti_init_shell sensors_persist_file:dir { relabelfrom relabelto setattr };
-allow qti_init_shell sensors_persist_file:file { relabelfrom relabelto };
-allow qti_init_shell system_data_file:lnk_file create_file_perms;
-allow qti_init_shell tp_data_file:dir rw_dir_perms;
-allow qti_init_shell tp_data_file:lnk_file create_file_perms;
