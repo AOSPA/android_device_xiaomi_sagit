@@ -113,7 +113,7 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_HW_DISK_ENCRYPTION := true
 
 # Filesystem
-TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(PLATFORM_PATH)/android_filesystem_config.h
+TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
 
 # Gesture
 TARGET_TAP_TO_WAKE_NODE := "/data/tp/wake_gesture"
