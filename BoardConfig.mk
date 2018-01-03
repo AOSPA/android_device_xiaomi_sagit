@@ -158,9 +158,6 @@ TARGET_PD_SERVICE_ENABLED := true
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
-# Properties
-TARGET_SYSTEM_PROP += $(PLATFORM_PATH)/system.prop
-
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
