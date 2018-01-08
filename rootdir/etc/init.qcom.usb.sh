@@ -113,8 +113,9 @@ baseband=`getprop ro.baseband`
 
 echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
 usb_config=`getprop persist.sys.usb.config`
+debuggable=`getprop ro.debuggable`
 case "$usb_config" in
-    "" | "adb") #USB persist config not set, select default configuration
+    "" | "adb" | "none") #USB persist config not set, select default configuration
       case "$esoc_link" in
           "PCIe")
               setprop persist.sys.usb.config diag,diag_mdm,serial_cdev,rmnet_qti_ether,mass_storage,adb
@@ -128,6 +129,13 @@ case "$usb_config" in
 	      case "$soc_hwplatform" in
 	          "Dragon" | "SBC")
 	              setprop persist.sys.usb.config diag,adb
+	          ;;
+	          "SAGIT" | "CENTAUR" | "CHIRON" | "CHIRON_S")
+	              if [ -z "$debuggable" -o "$debuggable" = "1"  ]; then
+	                  setprop persist.sys.usb.config mtp,adb
+	              else
+	                  setprop persist.sys.usb.config mtp
+	              fi
 	          ;;
                   *)
 		  soc_machine=${soc_machine:0:3}
@@ -214,11 +222,6 @@ esac
 # check configfs is mounted or not
 if [ -d /config/usb_gadget ]; then
 	# Chip-serial is used for unique MSM identification in Product string
-	msm_serial=`cat /sys/devices/soc0/serial_number`;
-	msm_serial_hex=`printf %08X $msm_serial`
-	machine_type=`cat /sys/devices/soc0/machine`
-	product_string="$machine_type-$soc_hwplatform _SN:$msm_serial_hex"
-	echo "$product_string" > /config/usb_gadget/g1/strings/0x409/product
 
 	# ADB requires valid iSerialNumber; if ro.serialno is missing, use dummy
 	serialnumber=`cat /config/usb_gadget/g1/strings/0x409/serialnumber` 2> /dev/null

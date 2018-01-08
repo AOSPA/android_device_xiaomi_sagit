@@ -26,7 +26,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-# Update the panel color property and Leds brightness
+# Update the panel color property and Leds brightness 
 for i in $(seq 5); do
     if [ -f /sys/bus/i2c/devices/5-0049/panel_color ]; then
 	# St
