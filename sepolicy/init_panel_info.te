@@ -1,0 +1,5 @@
+type init_panel_info, domain;
+type init_panel_info_exec, exec_type, file_type;
+
+# Allow for transition from init domain to init_panel_info
+init_daemon_domain(init_panel_info)

@@ -1,0 +1,5 @@
+type init_leds, domain;
+type init_leds_exec, exec_type, file_type;
+
+# Allow for transition from init domain to init_leds
+init_daemon_domain(init_leds)

@@ -1,0 +1,13 @@
+# Devices
+/dev/goodix_fp                                     u:object_r:goodixfp_device:s0
+
+# Data files
+/data/misc/gf_data(/.*)?                           u:object_r:goodix_data_file:s0
+/data/misc/goodix(/.*)?                            u:object_r:goodix_data_file:s0
+
+# Binaries
+/system/vendor/bin/display_count                   u:object_r:display_count_exec:s0
+
+# Shell scripts
+/system/vendor/bin/init.leds.sh                    u:object_r:init_leds_exec:s0
+/system/vendor/bin/init.panel_info.sh              u:object_r:init_panel_info_exec:s0
