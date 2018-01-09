@@ -163,6 +163,7 @@ PRODUCT_PACKAGES += \
     libdisplayconfig \
     libhwc2on1adapter \
     libjson \
+    libqdMetaData.system \
     libtinyxml \
     memtrack.msm8998 \
     vendor.display.config@1.0 \
@@ -242,6 +243,11 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes \
     libebtc
+
+# IR
+PRODUCT_PACKAGES += \
+    android.hardware.ir@1.0-impl \
+    android.hardware.ir@1.0-service
 
 # IRQ balance
 PRODUCT_COPY_FILES += \
