@@ -45,6 +45,9 @@ on init
     write /dev/stune/top-app/schedtune.colocate 1
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
+    # Goodix fingerprint
+    chown system system /dev/goodix_fp
+
 on fs
     wait /dev/block/platform/soc/1da4000.ufshc
     symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
@@ -82,6 +85,11 @@ on post-fs-data
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/thermal 0771 system system
     mkdir /data/thermal/config 0771 system system
+    mkdir /data/misc/seemp 0700 system system
+    mkdir /data/misc/fpc 0770 system system
+    mkdir /data/misc/goodix 0770 system system
+    mkdir /persist/qti_fp 0700 system system
+    mkdir /persist/fpc 0770 system system
     chown system system /dev/sysmatdrv
     chmod 0660 /dev/sysmatdrv
 #QDCM config file for sagit
@@ -157,6 +165,22 @@ on boot
 
 #Load WLAN driver
    insmod /vendor/lib/modules/qca_cld3_wlan.ko
+
+    # Fingerprint
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/irq
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/irq_enable
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/wakeup_enable
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/hw_reset
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/device_prepare
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/fingerdown_wait
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
+    chown system system /data/misc/fpc/calibration_image.pndat
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/irq
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/wakeup_enable
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/hw_reset
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/device_prepare
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
+    chmod 0600 /data/misc/fpc/calibration_image.pndat
 
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
