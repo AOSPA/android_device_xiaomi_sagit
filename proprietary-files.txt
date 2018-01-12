@@ -69,7 +69,6 @@ etc/firmware/tfa98xx_aac.cnt
 etc/firmware/tfa98xx_ssi.cnt
 
 # Audio libraries
-lib/soundfx/libdirac.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
@@ -82,6 +81,7 @@ vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
 vendor/lib64/libqtigef.so
 vendor/lib/soundfx/libasphere.so
+vendor/lib/soundfx/libdirac.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so

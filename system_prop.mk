@@ -1,7 +1,7 @@
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=2 \
-    audio.adm.buffering.ms=3 \
+    audio.adm.buffering.ms=6 \
     audio.offload.min.duration.secs=15 \
     vendor.audio.hw.aac.encoder=false \
     vendor.audio.offload.multiple.enabled=true \
