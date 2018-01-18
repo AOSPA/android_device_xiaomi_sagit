@@ -321,6 +321,9 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.0-service \
     power.msm8998
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+
 # QPerformance
 PRODUCT_BOOT_JARS += \
     QPerformance
