@@ -196,7 +196,3 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/xiaomi/sagit/BoardConfigVendor.mk
-
-# Configuration to use prebuilt kernel
-BOARD_CUSTOM_BOOTIMG_MK := $(PLATFORM_PATH)/mkbootimg.mk
-TARGET_PREBUILT_KERNEL := device/xiaomi/sagit-prebuilt/kernel
