@@ -1361,6 +1361,7 @@ vendor/radio/qcril_database/qcril.db
 -app/imssettings/imssettings.apk
 -app/uceShimService/uceShimService.apk
 etc/permissions/com.qualcomm.qti.imscmservice.xml
+etc/permissions/qti-vzw-ims-internal.xml
 framework/com.qualcomm.qti.imscmservice@1.0-java.jar
 framework/rcs_service_aidl.jar
 framework/rcs_service_api.jar
