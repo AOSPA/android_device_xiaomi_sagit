@@ -16,6 +16,7 @@ vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so
 vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so
 vendor/lib/rfsa/adsp/dirac_resource.dar
 vendor/lib/rfsa/adsp/dirac_resource.so
+vendor/lib/rfsa/adsp/libadsp_fd_skel.so
 vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so
 vendor/lib/rfsa/adsp/libadsp_hvx_skel.so
 vendor/lib/rfsa/adsp/libapps_mem_heap.so
@@ -160,7 +161,6 @@ vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libchromaflash.so
 vendor/lib/libdualcameraddm.so
 vendor/lib/libFaceGrade.so
-vendor/lib/libFaceProc.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
@@ -198,6 +198,8 @@ vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_hvx_add_constant.so
 vendor/lib/libmmcamera_hvx_grid_sum.so
 vendor/lib/libmmcamera_imglib.so
+vendor/lib/libmmcamera_imglib_faceproc_adspstub2.so
+vendor/lib/libmmcamera_imglib_faceproc_adspstub.so
 vendor/lib/libmmcamera_interface.so
 vendor/lib/libmmcamera_isp_abf48.so
 vendor/lib/libmmcamera_isp_aec_bg_stats47.so
@@ -249,6 +251,7 @@ vendor/lib/libmmcamera_paaf_lib.so
 vendor/lib/libmmcamera_pdaf.so
 vendor/lib/libmmcamera_pdafcamif.so
 vendor/lib/libmmcamera_ppbase_module.so
+vendor/lib/libmmcamera_ppeiscore.so
 vendor/lib/libmmcamera_quadracfa.so
 vendor/lib/libmmcamera_sac_lib.so
 vendor/lib/libmmcamera_stillmore_lib.so
@@ -273,12 +276,12 @@ vendor/lib/libqomx_core.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 vendor/lib/libqomx_jpegenc_pipe.so
-vendor/lib/libRecoFace.so
 vendor/lib/libremosaic_daemon.so
 vendor/lib/libsac.so
 vendor/lib/libseemore.so
 vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libubifocus.so
+vendor/lib/libXMFD_AgeGender.so
 
 # Camera actuators
 vendor/lib/libactuator_ad5816g.so
@@ -668,8 +671,6 @@ etc/camera/sagit_imx268_liteon_chromatix.xml
 
 # Camera etc
 etc/age_gender_bg
-etc/android_model_facea.dat
-etc/android_model_faceg.dat
 etc/dualcamera.png
 etc/face_goodly_208_180
 etc/face_ravishing_238_224

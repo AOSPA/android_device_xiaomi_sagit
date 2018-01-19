@@ -3,15 +3,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=2 \
     audio.adm.buffering.ms=6 \
     audio.offload.min.duration.secs=15 \
+    audio.usb.disable.sidetone=false \
+    persist.audio.dirac.speaker=true \
+    persist.audio.speaker.dualmode=true \
+    ro.audio.nojack=true \
+    ro.vendor.audio.sdk.fluencetype=fluence \
     vendor.audio.hw.aac.encoder=false \
     vendor.audio.offload.multiple.enabled=true \
     vendor.audio.offload.track.enable=false \
     vendor.audio.parser.ip.buffer.size=0 \
-    vendor.voice.path.for.pcm.voip=false \
-    ro.audio.nojack=true \
-    ro.vendor.audio.sdk.fluencetype=fluence \
-    persist.audio.dirac.speaker=true \
-    persist.audio.speaker.dualmode=true
+    vendor.voice.path.for.pcm.voip=false
 
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -25,6 +26,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.miui.cit,co.paranoidandroid.camera \
+    persist.dualcam.lpm.enable=1 \
     persist.ts.rtmakeup=false \
     vidc.enc.dcvs.extra-buff-count=2
 
