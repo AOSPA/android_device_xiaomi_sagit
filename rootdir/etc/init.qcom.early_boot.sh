@@ -285,31 +285,74 @@ case "$target" in
         ;;
 esac
 
-# In mpss AT version is greater than 3.1, need
-# to use the new vendor-ril which supports L+L feature
-# otherwise use the existing old one.
 if [ -f /firmware/verinfo/ver_info.txt ]; then
+    # In mpss AT version is greater than 3.1, need
+    # to use the new vendor-ril which supports L+L feature
+    # otherwise use the existing old one.
     modem=`cat /firmware/verinfo/ver_info.txt |
             sed -n 's/^[^:]*modem[^:]*:[[:blank:]]*//p' |
-            sed 's/.*AT.\(.*\)/\1/g' | cut -d \- -f 1`
-    zygote=`getprop ro.zygote`
-    case "$zygote" in
-    "zygote64_32")
-        if [ "$modem" \< "3.1" ]; then
-            setprop vendor.rild.libpath "/vendor/lib64/libril-qc-qmi-1.so"
-        else
-            setprop vendor.rild.libpath "/vendor/lib64/libril-qc-hal-qmi.so"
+            sed 's/.*MPSS.\(.*\)/\1/g' | cut -d \. -f 1`
+    if [ "$modem" = "AT" ]; then
+        version=`cat /firmware/verinfo/ver_info.txt |
+                sed -n 's/^[^:]*modem[^:]*:[[:blank:]]*//p' |
+                sed 's/.*AT.\(.*\)/\1/g' | cut -d \- -f 1`
+        if [ ! -z $version ]; then
+            zygote=`getprop ro.zygote`
+            case "$zygote" in
+                "zygote64_32")
+                    if [ "$version" \< "3.1" ]; then
+                        setprop vendor.rild.libpath "/vendor/lib64/libril-qc-qmi-1.so"
+                    else
+                        setprop vendor.rild.libpath "/vendor/lib64/libril-qc-hal-qmi.so"
+                    fi
+                    ;;
+                "zygote32")
+                    if [ "$version" \< "3.1" ]; then
+                        echo "legacy qmi load for TA less than 3.1"
+                        setprop vendor.rild.libpath "/vendor/lib/libril-qc-qmi-1.so"
+                    else
+                        setprop vendor.rild.libpath "/vendor/lib/libril-qc-hal-qmi.so"
+                    fi
+                    ;;
+            esac
         fi
-        ;;
-    "zygote32")
-        if [ "$modem" \< "3.1" ]; then
-            setprop vendor.rild.libpath "/vendor/lib/libril-qc-qmi-1.so"
-        else
-            setprop vendor.rild.libpath "/vendor/lib/libril-qc-hal-qmi.so"
+    # In mpss TA version is greater than 3.0, need
+    # to use the new vendor-ril which supports L+L feature
+    # otherwise use the existing old one.
+    elif [ "$modem" = "TA" ]; then
+        version=`cat /firmware/verinfo/ver_info.txt |
+                sed -n 's/^[^:]*modem[^:]*:[[:blank:]]*//p' |
+                sed 's/.*TA.\(.*\)/\1/g' | cut -d \- -f 1`
+        if [ ! -z $version ]; then
+            zygote=`getprop ro.zygote`
+            case "$zygote" in
+                "zygote64_32")
+                    if [ "$version" \< "3.0" ]; then
+                        setprop vendor.rild.libpath "/vendor/lib64/libril-qc-qmi-1.so"
+                    else
+                        setprop vendor.rild.libpath "/vendor/lib64/libril-qc-hal-qmi.so"
+                    fi
+                    ;;
+                "zygote32")
+                    if [ "$version" \< "3.0" ]; then
+                        setprop vendor.rild.libpath "/vendor/lib/libril-qc-qmi-1.so"
+                    else
+                        setprop vendor.rild.libpath "/vendor/lib/libril-qc-hal-qmi.so"
+                    fi
+                    ;;
+            esac
         fi
-        ;;
-    esac
+    fi;
 fi
+
+baseband=`getprop ro.baseband`
+#enable atfwd daemon all targets except sda, apq, qcs
+case "$baseband" in
+    "apq" | "sda" | "qcs" )
+        setprop persist.radio.atfwd.start false;;
+    *)
+        setprop persist.radio.atfwd.start true;;
+esac
 
 #set default lcd density
 #Since lcd density has read only
@@ -350,6 +393,9 @@ function setHDMIPermission() {
    set_perms $file/cec/wr_msg system.graphics 0600
    set_perms $file/hdcp/tp system.graphics 0664
    set_perms $file/hdmi_audio_cb audioserver.audio 0600
+   set_perms $file/pll_enable system.graphics 0664
+   set_perms $file/hdmi_ppm system.graphics 0664
+
    ln -s $dev_file $dev_gfx_hdmi
 }
 

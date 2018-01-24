@@ -63,6 +63,7 @@ on early-boot
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
     exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
+    chown root audio /sys/kernel/boot_adsp/boot
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -195,6 +196,18 @@ on boot
     chown system system /sys/class/sensors/apds9930-light/poll_delay
     chown system system /sys/class/sensors/apds9930-proximity/enable
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
+    chown system system /sys/class/sensors/compass/enable
+    chown system system /sys/class/sensors/compass/poll_delay
+    chown system system /sys/class/sensors/bma2x2-accel/enable
+    chown system system /sys/class/sensors/bma2x2-accel/poll_delay
+    chown system system /sys/class/sensors/ltr553-light/enable
+    chown system system /sys/class/sensors/ltr553-light/poll_delay
+    chown system system /sys/class/sensors/ltr553-proximity/enable
+    chown system system /sys/class/sensors/ltr553-proximity/poll_delay
+    chown system system /sys/class/sensors/ap3426-light/enable
+    chown system system /sys/class/sensors/ap3426-light/poll_delay
+    chown system system /sys/class/sensors/ap3426-proximity/enable
+    chown system system /sys/class/sensors/ap3426-proximity/poll_delay
 
     # Create directory used for display
     mkdir /persist/display 0770 system graphics
@@ -469,11 +482,6 @@ on property:sys.boot_completed=1
     #WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name
-on property:persist.radio.atfwd.start=false
-    stop atfwd
-
-on property:radio.atfwd.start=false
-    stop atfwd
 
 # corefile limit
 on property:persist.debug.trace=1
@@ -629,7 +637,7 @@ service ipacm-diag /system/vendor/bin/ipacm-diag
     class main
     user radio
     socket ipacm_log_file dgram 660 radio radio
-    group radio diag
+    group radio diag oem_2901
 
 service ipacm /system/vendor/bin/ipacm
     class main
@@ -639,7 +647,7 @@ service ipacm /system/vendor/bin/ipacm
 service qti /system/vendor/bin/qti
     class main
     user radio
-    group radio net_raw diag usb net_admin
+    group radio oem_2901 diag usb net_admin
 
 service sensors /vendor/bin/sensors.qcom
     class core
@@ -968,6 +976,10 @@ service atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    disabled
+
+on property:persist.radio.atfwd.start=true
+    start atfwd
 
 service hostapd_fst /vendor/bin/hostapd -dd -g /data/vendor/wifi/hostapd/global /data/misc/wifi/hostapd.conf
     class late_start
@@ -1060,17 +1072,17 @@ on property:sys.qbcharger.enable=true
 on property:sys.qbcharger.enable=false
     stop qbcharger
 
-service diag_mdlog_start /system/vendor/bin/diag_mdlog -n 20
+service diag_mdlog_start /system/vendor/bin/diag_mdlog
     class late_start
     user shell
-    group system diag sdcard_rw sdcard_r media_rw oem_2901
+    group system oem_2901 sdcard_rw sdcard_r media_rw
     disabled
     oneshot
 
 service diag_mdlog_stop /system/vendor/bin/diag_mdlog -k
     class late_start
     user shell
-    group system diag sdcard_rw sdcard_r media_rw oem_2901
+    group system oem_2901 sdcard_rw sdcard_r media_rw
     disabled
     oneshot
 
@@ -1148,6 +1160,10 @@ service poweroffhandler /system/vendor/bin/poweroffhandler
     group graphics audio
     disabled
     oneshot
+
+on property:init.svc.surfaceflinger=restarting
+    stop hwcomposer-2-1
+    start hwcomposer-2-1
 
 # Logcat dump daemon, dumps logs to logdump partition
 #service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
