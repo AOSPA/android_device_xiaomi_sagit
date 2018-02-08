@@ -122,6 +122,9 @@ PRODUCT_PACKAGES += \
     camera.device@3.2-impl \
     org.codeaurora.camera
 
+PRODUCT_PACKAGES += \
+    libshims_skia
+
 PRODUCT_BOOT_JARS += \
     com.qualcomm.qti.camera
 
