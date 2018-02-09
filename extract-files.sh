@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2018 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +24,7 @@ export VENDOR=xiaomi
 
 export DEVICE_BRINGUP_YEAR=2017
 
-# Load extractutils and do some sanity checks
+# Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
@@ -36,39 +37,30 @@ if [ ! -f "$HELPER" ]; then
 fi
 . "$HELPER"
 
-while getopts ":nhsd:" options
-do
-  case $options in
-    n ) CLEANUP="false" ;;
-    d ) SRC=$OPTARG ;;
-    s ) SETUP=1 ;;
-    h ) echo "Usage: `basename $0` [OPTIONS] "
-        echo "  -n  No cleanup"
-        echo "  -d  Fetch blob from filesystem"
-        echo "  -s  Setup only, no extraction"
-        echo "  -h  Show this help"
-        exit ;;
-    * ) ;;
-  esac
+# Default to sanitizing the vendor folder before extraction
+CLEAN_VENDOR=true
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -n | --no-cleanup )     CLEAN_VENDOR=false
+                                ;;
+        -s | --section )        shift
+                                SECTION=$1
+                                CLEAN_VENDOR=false
+                                ;;
+        * )                     SRC=$1
+                                ;;
+    esac
+    shift
 done
 
-if [ -z $SRC ]; then
-  SRC=adb
+if [ -z "$SRC" ]; then
+    SRC=adb
 fi
 
-if [ -n "$SETUP" ]; then
-    if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
-        # Initalize the helper for device
-        setup_vendor "$DEVICE" "$VENDOR" "$ROOT" false false
-        "$MY_DIR"/setup-makefiles.sh false
-    fi
-else
-    if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
-        # Reinitialize the helper for device
-        setup_vendor "$DEVICE" "$VENDOR" "$ROOT" false "$CLEANUP"
+# Initialize the helper for device
+setup_vendor "$DEVICE" "$VENDOR" "$ROOT" false "$CLEAN_VENDOR"
 
-        extract "$MY_DIR"/../$DEVICE/proprietary-files.txt "$SRC"
-    fi
+extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 
-    "$MY_DIR"/setup-makefiles.sh "$CLEANUP"
-fi
+"$MY_DIR"/setup-makefiles.sh
