@@ -11,8 +11,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.hw.aac.encoder=false \
     vendor.audio.offload.multiple.enabled=true \
     vendor.audio.offload.track.enable=false \
-    vendor.audio.parser.ip.buffer.size=0 \
-    vendor.voice.path.for.pcm.voip=false
+    vendor.audio.parser.ip.buffer.size=0
 
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -176,6 +175,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.force_on_dc=true \
     persist.vendor.radio.rat_on=combine \
+    persist.vendor.radio.redir_party_num=1 \
+    persist.vendor.radio.report_codec=1 \
     persist.vendor.radio.sib16_support=1 \
     telephony.lteOnCdmaDevice=1
 
