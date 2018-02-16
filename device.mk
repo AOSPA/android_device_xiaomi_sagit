@@ -168,9 +168,7 @@ PRODUCT_PACKAGES += \
     libjson \
     libqdMetaData.system \
     libtinyxml \
-    memtrack.msm8998 \
-    vendor.display.config@1.0 \
-    vendor.display.config@1.0_vendor
+    memtrack.msm8998
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
