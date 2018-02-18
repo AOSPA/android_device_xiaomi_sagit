@@ -67,6 +67,9 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno540
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 
+# Bionic
+TARGET_LD_SHIM_LIBS := /system/vendor/lib/hw/camera.msm8998.so|libshims_skia.so
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
