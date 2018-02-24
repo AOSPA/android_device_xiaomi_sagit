@@ -151,6 +151,13 @@ echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
 echo 801 > /sys/module/lowmemorykiller/parameters/adj_max_shift
 echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
 
+# Set read_ahead_kb to 128 and scheduler to cfq
+for block_device in /sys/block/*
+do
+    echo 128 > $block_device/queue/read_ahead_kb
+    echo cfq > $block_device/queue/scheduler
+done
+
 # Post-setup services
 setprop sys.post_boot.parsed 1
 
