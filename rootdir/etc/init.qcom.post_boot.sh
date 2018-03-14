@@ -95,10 +95,6 @@ echo "1248000 1344000" > /sys/module/cpu_boost/parameters/input_boost_freq
 echo 90 > /sys/module/cpu_boost/parameters/input_boost_ms
 echo "1171200 1190400" > /sys/module/cpu_boost/parameters/input_boost_freq_s2
 echo 150 > /sys/module/cpu_boost/parameters/input_boost_ms_s2
-echo "1824000 2208000" > /sys/module/cpu_boost/parameters/powerkey_input_boost_freq
-echo 350 > /sys/module/cpu_boost/parameters/powerkey_input_boost_ms
-echo "1747200 2112000" > /sys/module/cpu_boost/parameters/powerkey_input_boost_freq_s2
-echo 430 > /sys/module/cpu_boost/parameters/powerkey_input_boost_ms_s2
 
 # Enable bus-dcvs
 for cpubw in /sys/class/devfreq/*qcom,cpubw*
