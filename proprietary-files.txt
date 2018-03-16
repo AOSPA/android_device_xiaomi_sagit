@@ -1476,11 +1476,11 @@ vendor/etc/thermal-engine.conf
 vendor/lib64/libthermalioctl.so
 -vendor/lib/libthermalclient.so
 
-# Time services
-vendor/bin/time_daemon
--vendor/app/TimeService/TimeService.apk
--vendor/lib64/libtime_genoff.so
--vendor/lib/libtime_genoff.so
+# Time services - from OnePlus5 OB6
+vendor/bin/time_daemon|87eab8da4de4c153a3341d0b6a10795c13723b58
+-vendor/app/TimeService/TimeService.apk|d3d5fe44927a4d0aabfc120fbfac12d260f2464b
+-vendor/lib64/libtime_genoff.so|7683a85cae9f17cd535e8960fceda1d6831074a0
+-vendor/lib/libtime_genoff.so|e0773fb8eb0342889ae74be034357f1e12077e69
 
 # TUI
 lib64/vendor.qti.hardware.tui_comm@1.0.so
