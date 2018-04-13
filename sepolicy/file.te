@@ -4,6 +4,9 @@ type fingerprint_data_file, file_type;
 # Panel info
 type sysfs_panel_info, sysfs_type, fs_type;
 
+# Power
+type sysfs_touchpanel, sysfs_type, fs_type;
+
 # Printk parameters
 type sysfs_printk_parameters, sysfs_type, fs_type;
 
