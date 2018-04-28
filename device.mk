@@ -88,8 +88,6 @@ PRODUCT_PACKAGES += \
     libantradio
 
 # Audio
--include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
-
 PRODUCT_PACKAGES += \
     audiod \
     audio.a2dp.default \
@@ -109,6 +107,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/mixer_paths_tasha.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tasha.xml
+
+-include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
 
 # Bluetooth
 PRODUCT_PACKAGES += \
