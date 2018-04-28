@@ -67,6 +67,9 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno540
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 
+# Audio
+BOARD_SUPPORTS_SOUND_TRIGGER := true
+
 # Bionic
 TARGET_LD_SHIM_LIBS := /system/vendor/lib/hw/camera.msm8998.so|libshims_skia.so
 

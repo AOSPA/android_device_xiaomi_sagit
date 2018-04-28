@@ -7,11 +7,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.dirac.speaker=true \
     persist.audio.speaker.dualmode=true \
     ro.audio.nojack=true \
+    ro.audio.soundtrigger=none \
+    ro.audio.soundtrigger.lowpower=false \
     ro.vendor.audio.sdk.fluencetype=fluence \
     vendor.audio.hw.aac.encoder=false \
     vendor.audio.offload.multiple.enabled=true \
     vendor.audio.offload.track.enable=false \
-    vendor.audio.parser.ip.buffer.size=0
+    vendor.audio.parser.ip.buffer.size=0 \
+    vendor.audio.soundtrigger.phrase.adsp.level=40 \
+    vendor.audio.soundtrigger.phrase.level=40 \
+    vendor.audio.soundtrigger.training.level=50 \
+    vendor.audio.soundtrigger.user.adsp.level=30 \
+    vendor.audio.soundtrigger.user.level=60
 
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
