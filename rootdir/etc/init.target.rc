@@ -93,8 +93,6 @@ on post-fs-data
     mkdir /data/misc/goodix 0770 system system
     mkdir /persist/qti_fp 0700 system system
     mkdir /persist/fpc 0770 system system
-    chown system system /dev/sysmatdrv
-    chmod 0660 /dev/sysmatdrv
 #QDCM config file for sagit
     copy /system/etc/calib.cfg /data/vendor/display/calib.cfg
     copy /system/etc/qdcm_calib_data_jdi_fhd_cmd_incell_dsi_panel.xml /data/vendor/display/qdcm_calib_data_jdi_fhd_cmd_incell_dsi_panel.xml
@@ -575,19 +573,6 @@ on property:persist.audio.plug_times=*
 
 on property:slpi.restart=1
    write /sys/kernel/debug/msm_subsys/slpi restart
-
-
-service smonsir /system/bin/smonsir
-    user root
-    group root
-    oneshot
-    disabled
-
-service smprosrv /system/bin/smprosrv
-    user root
-    group root
-    oneshot
-    disabled
 
 on property:init.svc.zygote=stopped
     stop hal_displayfeature
