@@ -1,0 +1,15 @@
+# Fingerprint sensor
+persist.sys.fp.                                    u:object_r:fingerprint_prop:s0
+ro.boot.fpsensor                                   u:object_r:fingerprint_prop:s0
+ro.hardware.fp                                     u:object_r:fingerprint_prop:s0
+
+# Panel info
+sys.panel.                                         u:object_r:panel_info_prop:s0
+
+# Radio
+sys.fake_bs_flag0                                  u:object_r:system_radio_prop:s0
+sys.fake_bs_flag1                                  u:object_r:system_radio_prop:s0
+
+# Thermal
+persist.sys.thermal.                               u:object_r:thermal_prop:s0
+sys.thermal.                                       u:object_r:thermal_prop:s0

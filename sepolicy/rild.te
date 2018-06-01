@@ -1,0 +1,6 @@
+set_prop(rild, system_radio_prop);
+
+allow rild qcril_db_file:file r_file_perms;
+
+allow rild tombstone_data_file:dir rw_dir_perms;
+allow rild tombstone_data_file:file create_file_perms;

@@ -1,1 +1,6 @@
-type goodixfp_device, dev_type;
+# Fingerprint sensor
+type fingerprintd_device, dev_type;
+
+# UFS devices
+type persist_block_device, dev_type;
+type cust_block_device, dev_type;

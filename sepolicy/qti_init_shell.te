@@ -1,0 +1,11 @@
+allow qti_init_shell sysfs:file rw_file_perms;
+allow qti_init_shell sensors_data_file:dir setattr;
+allow qti_init_shell sensors_persist_file:dir { relabelfrom relabelto };
+allow qti_init_shell sensors_persist_file:file { relabelfrom relabelto };
+allow qti_init_shell sysfs_printk_parameters:file write;
+
+set_prop(qti_init_shell, panel_info_prop);
+
+allow qti_init_shell sysfs_leds:file w_file_perms;
+
+allow qti_init_shell toolbox_exec:file rx_file_perms;

@@ -1,0 +1,21 @@
+type_transition thermal-engine system_data_file:file thermal_data_file;
+type_transition thermal-engine socket_device:sock_file thermal_socket;
+
+allow thermal-engine self:capability { chown dac_override dac_read_search fowner fsetid sys_boot };
+
+allow thermal-engine system_data_file:dir create_dir_perms;
+
+allow thermal-engine thermal_data_file:dir rw_dir_perms;
+allow thermal-engine thermal_data_file:file create_file_perms;
+
+allow thermal-engine thermal_prop:file r_file_perms;
+allow thermal-engine thermal_prop:property_service set;
+
+set_prop(thermal-engine, thermal_prop);
+
+allow thermal-engine proc_stat:file r_file_perms;
+
+allow thermal-engine sysfs_uio:dir r_dir_perms;
+allow thermal-engine sysfs_uio:lnk_file r_file_perms;
+allow thermal-engine sysfs_uio_file:dir r_dir_perms;
+allow thermal-engine sysfs_uio_file:file r_file_perms;

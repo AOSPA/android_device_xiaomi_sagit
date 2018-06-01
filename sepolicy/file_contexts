@@ -1,13 +1,38 @@
-# Devices
-/dev/goodix_fp                                     u:object_r:goodixfp_device:s0
+# Display count
+/(vendor|system/vendor)/bin/display_count                               u:object_r:display_count_exec:s0
 
-# Data files
-/data/misc/gf_data(/.*)?                           u:object_r:goodix_data_file:s0
-/data/misc/goodix(/.*)?                            u:object_r:goodix_data_file:s0
+# Fingerprint sensor
+/dev/goodix_fp                                                          u:object_r:fingerprintd_device:s0
+/data/misc/gf_data(/.*)?                                                u:object_r:fingerprint_data_file:s0
+/data/misc/goodix(/.*)?                                                 u:object_r:fingerprint_data_file:s0
+/data/vendor/goodix(/.*)?                                               u:object_r:fingerprint_data_file:s0
 
-# Binaries
-/system/vendor/bin/display_count                   u:object_r:display_count_exec:s0
+# NFC chipset
+/dev/pn553                                                              u:object_r:nfc_device:s0
+
+# Panel info
+/sys/devices/soc/[a-z0-9]+.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/panel_[a-z]+   u:object_r:sysfs_panel_info:s0
+
+# Printk parameters
+/sys/module/printk/parameters(/.*)?                                     u:object_r:sysfs_printk_parameters:s0
+
+# Radio database file
+/(vendor|system/vendor)/radio/qcril_database/qcril.db                   u:object_r:qcril_db_file:s0
+
+# Sensors
+/persist/PRSensorData.txt                                               u:object_r:sensors_persist_file:s0
 
 # Shell scripts
-/system/vendor/bin/init.leds.sh                    u:object_r:init_leds_exec:s0
-/system/vendor/bin/init.panel_info.sh              u:object_r:init_panel_info_exec:s0
+/(vendor|system/vendor)/bin/init\.leds\.sh                              u:object_r:qti_init_shell_exec:s0
+/(vendor|system/vendor)/bin/init\.panel_info\.sh                        u:object_r:qti_init_shell_exec:s0
+
+# SMB power supply
+/sys/devices/soc/[a-z0-9]+.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/[a-z0-9]+.i2c:qcom,smb138x@8:qcom,smb138x-parallel-slave@[0-9]+/power_supply/parallel(/.*)?    u:object_r:sysfs_battery_supply:s0
+
+# Thermal
+/data/decrypt.txt                                                       u:object_r:decrypt_file:s0
+/data/thermal(/.*)?                                                     u:object_r:thermal_data_file:s0
+
+# UFS devices
+/dev/block/platform/soc/1da4000.ufshc/by-name/persist                   u:object_r:persist_block_device:s0
+/dev/block/platform/soc/1da4000.ufshc/by-name/cust                      u:object_r:cust_block_device:s0

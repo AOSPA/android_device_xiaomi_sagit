@@ -3,3 +3,9 @@ type init_panel_info_exec, exec_type, file_type;
 
 # Allow for transition from init domain to init_panel_info
 init_daemon_domain(init_panel_info)
+
+set_prop(init_panel_info, panel_info_prop);
+
+allow init_panel_info sysfs_panel_info:file r_file_perms;
+allow init_panel_info toolbox_exec:file rx_file_perms;
+allow init_panel_info vendor_toolbox_exec:file x_file_perms;

@@ -1,1 +1,18 @@
-type goodix_data_file, file_type;
+# Fingerprint sensor
+type fingerprint_data_file, file_type;
+
+# Panel info
+type sysfs_panel_info, sysfs_type, fs_type;
+
+# Printk parameters
+type sysfs_printk_parameters, sysfs_type, fs_type;
+
+# Radio database file
+type qcril_db_file, file_type, data_file_type;
+
+# Remote storage
+type debugfs_rmt, fs_type, debugfs_type;
+
+# Thermal
+type decrypt_file, file_type, data_file_type;
+type thermal_data_file, file_type, data_file_type;

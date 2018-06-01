@@ -1,0 +1,1 @@
+allow sensors panel_info_prop:file r_file_perms;
