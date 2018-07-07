@@ -1200,11 +1200,11 @@ service seemp_healthd /vendor/bin/seemp_healthd
     user system
     group system
 
-service power_off_alarm /vendor/bin/power_off_alarm
-    class core
-    group system
-    disabled
-    oneshot
+#service power_off_alarm /vendor/bin/power_off_alarm
+#    class core
+#    group system
+#    disabled
+#    oneshot
 
 service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main
