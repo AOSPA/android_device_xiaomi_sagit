@@ -29,10 +29,6 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
-# Device was launched with N
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.first_api_level=25
-
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk
 
