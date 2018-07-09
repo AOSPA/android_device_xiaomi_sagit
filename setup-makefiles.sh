@@ -44,7 +44,7 @@ setup_vendor "$DEVICE" "$VENDOR" "$ROOT" false
 write_headers
 
 # The standard device blobs
-write_makefiles "$MY_DIR"/proprietary-files.txt
+write_makefiles "$MY_DIR"/proprietary-files.txt true
 
 # We are done!
 write_footers

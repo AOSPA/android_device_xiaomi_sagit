@@ -174,7 +174,7 @@ PRODUCT_PACKAGES += \
     memtrack.msm8998
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
+    $(LOCAL_PATH)/configs/calib.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/calib.cfg
 
 # DRM
 PRODUCT_PACKAGES += \

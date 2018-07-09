@@ -63,4 +63,30 @@ setup_vendor "$DEVICE" "$VENDOR" "$ROOT" false "$CLEAN_VENDOR"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 
+COMMON_BLOB_ROOT="$ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
+
+#
+# Load moved mi camera dependencies from vendor
+#
+function fix_camera_etc_path () {
+    sed -i \
+        's/system\/etc\//vendor\/etc\//g' \
+        "$COMMON_BLOB_ROOT"/"$1"
+}
+
+fix_camera_etc_path vendor/lib/libmmcamera2_sensor_modules.so
+fix_camera_etc_path vendor/lib/libMiCameraHal.so
+fix_camera_etc_path vendor/lib/libFaceGrade.so
+
+# Correct VZW IMS library location
+#
+QTI_VZW_IMS_INTERNAL="$COMMON_BLOB_ROOT"/vendor/etc/permissions/qti-vzw-ims-internal.xml
+sed -i "s|/system/vendor/framework/qti-vzw-ims-internal.jar|/vendor/framework/qti-vzw-ims-internal.jar|g" "$QTI_VZW_IMS_INTERNAL"
+
+#
+# Correct android.hidl.manager@1.0-java jar name
+#
+QTI_LIBPERMISSIONS="$COMMON_BLOB_ROOT"/vendor/etc/permissions/qti_libpermissions.xml
+sed -i "s|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g" "$QTI_LIBPERMISSIONS"
+
 "$MY_DIR"/setup-makefiles.sh
