@@ -33,8 +33,8 @@ PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=25
 
-# System properties
--include $(LOCAL_PATH)/system_prop.mk
+# Properties
+-include $(LOCAL_PATH)/vendor_prop.mk
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
