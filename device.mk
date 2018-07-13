@@ -335,13 +335,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
+# QCOM
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
+
 # QPerformance
 PRODUCT_BOOT_JARS += \
     QPerformance
-
-# QTI priv-app permissions
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
 
 # Renderscript HAL
 PRODUCT_PACKAGES += \
