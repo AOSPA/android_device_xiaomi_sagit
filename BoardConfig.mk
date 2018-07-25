@@ -126,7 +126,7 @@ TARGET_HW_DISK_ENCRYPTION := true
 TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
 
 # Gesture
-TARGET_TAP_TO_WAKE_NODE := "/data/tp/wake_gesture"
+TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)

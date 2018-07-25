@@ -185,6 +185,10 @@ on boot
     chown system system /sys/class/leds/white/brightness
     chown system system /sys/class/leds/white/blink
 
+    # Touchpanel
+    chown system system /proc/touchpanel/double_tap_enable
+    chmod 0660 /proc/touchpanel/double_tap_enable
+
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_completed
     swapon_all /vendor/etc/fstab.qcom
