@@ -78,6 +78,16 @@ fix_camera_etc_path vendor/lib/libmmcamera2_sensor_modules.so
 fix_camera_etc_path vendor/lib/libMiCameraHal.so
 fix_camera_etc_path vendor/lib/libFaceGrade.so
 
+#
+# Add necessary symbols containing camera libs from stock
+#
+patchelf --replace-needed libicuuc.so libicuuc_stock.so "$COMMON_BLOB_ROOT"/vendor/lib/libMiCameraHal.so
+patchelf --replace-needed libicuuc.so libicuuc_stock.so "$COMMON_BLOB_ROOT"/vendor/lib/hw/camera.msm8998.so
+patchelf --replace-needed libminikin.so libminikin_stock.so "$COMMON_BLOB_ROOT"/vendor/lib/libMiCameraHal.so
+patchelf --replace-needed libminikin.so libminikin_stock.so "$COMMON_BLOB_ROOT"/vendor/lib/hw/camera.msm8998.so
+patchelf --replace-needed libskia.so libskia_stock.so "$COMMON_BLOB_ROOT"/vendor/lib/libMiCameraHal.so
+patchelf --replace-needed libskia.so libskia_stock.so "$COMMON_BLOB_ROOT"/vendor/lib/hw/camera.msm8998.so
+
 # Correct VZW IMS library location
 #
 QTI_VZW_IMS_INTERNAL="$COMMON_BLOB_ROOT"/vendor/etc/permissions/qti-vzw-ims-internal.xml

@@ -188,10 +188,12 @@ vendor/lib/libchromaflash.so
 vendor/lib/libdualcameraddm.so
 vendor/lib/libFaceGrade.so
 vendor/lib/libflash_pmic.so
+vendor/lib/libicuuc_stock.so|df4986cf4cc7a2d143798dc5d1fbf483616240b5
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmibokeh_835.so
+vendor/lib/libminikin_stock.so|d3d851b483777fb26728fd6f0b750719b8fe81c9
 vendor/lib/libmm-qcamera.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
@@ -307,6 +309,7 @@ vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libremosaic_daemon.so
 vendor/lib/libsac.so
 vendor/lib/libseemore.so
+vendor/lib/libskia_stock.so|5e8eb541a77ecac1189479f96fe123f675e95a99
 vendor/lib/libts_detected_face_hal.so
 vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libubifocus.so

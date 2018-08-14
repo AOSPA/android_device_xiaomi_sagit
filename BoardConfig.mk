@@ -70,9 +70,6 @@ BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 # Audio
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 
-# Bionic
-TARGET_LD_SHIM_LIBS := /vendor/lib/hw/camera.msm8998.so|libshims_skia.so
-
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
