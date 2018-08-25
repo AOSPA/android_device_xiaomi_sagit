@@ -215,6 +215,8 @@ WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
 WIFI_DRIVER_STATE_ON := "ON"
 WIFI_DRIVER_STATE_OFF := "OFF"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+# Disable qmi EAP-SIM security
+DISABLE_EAP_PROXY := true
 
 # inherit from the proprietary version
 -include vendor/xiaomi/sagit/BoardConfigVendor.mk
