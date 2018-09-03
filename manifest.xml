@@ -65,13 +65,15 @@
     <hal format="hidl">
         <name>android.hardware.drm</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>ICryptoFactory</name>
+            <instance>clearkey</instance>
             <instance>default</instance>
         </interface>
         <interface>
             <name>IDrmFactory</name>
+            <instance>clearkey</instance>
             <instance>default</instance>
         </interface>
     </hal>
@@ -124,7 +126,7 @@
     <hal format="hidl">
         <name>android.hardware.health</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>2.0</version>
         <interface>
             <name>IHealth</name>
             <instance>default</instance>
@@ -182,7 +184,7 @@
     <hal format="hidl">
         <name>android.hardware.nfc</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>INfc</name>
             <instance>default</instance>
@@ -359,15 +361,6 @@
         <version>1.0</version>
         <interface>
             <name>IApiService</name>
-            <instance>cnd</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>com.quicinc.cne.server</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IServer</name>
             <instance>cnd</instance>
         </interface>
     </hal>
@@ -586,6 +579,15 @@
         <version>1.0</version>
         <interface>
             <name>ITuiComm</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.wifi.supplicant</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>ISupplicantVendor</name>
             <instance>default</instance>
         </interface>
     </hal>
