@@ -2,7 +2,7 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=2 \
     audio.adm.buffering.ms=6 \
-    audio.offload.min.duration.secs=15 \
+    audio.offload.min.duration.secs=30 \
     audio.usb.disable.sidetone=false \
     persist.audio.dirac.speaker=true \
     persist.audio.speaker.dualmode=true \
@@ -73,7 +73,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qcom.ad.calib.data=/system/etc/calib.cfg \
     ro.qcom.ad.sensortype=2 \
     sdm.perf_hint_window=50 \
-    vendor.display.enable_default_color_mode=0
+    vendor.display.disable_skip_validate=1 \
+    vendor.display.enable_default_color_mode=0 \
+    vendor.display.perf_hint_window=50 \
+    vendor.gralloc.enable_fb_ubwc=1
 
 # Displayfeature
 #PRODUCT_PROPERTY_OVERRIDES += \
@@ -134,7 +137,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.enable-player=true \
     media.stagefright.enable-qcp=true \
     media.stagefright.enable-scan=true \
-    mm.enable.qcom_parser=1047551 \
+    vendor.mm.enable.qcom_parser=1047551 \
     mm.enable.smoothstreaming=true \
     mmp.enable.3g2=true \
     persist.mm.enable.prefetch=true
@@ -161,6 +164,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     DEVICE_PROVISIONED=1 \
     rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so \
+    vendor.rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so \
     ril.subscription.types=RUIM \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.default_cdma_sub=0 \
