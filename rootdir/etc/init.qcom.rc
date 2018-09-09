@@ -425,6 +425,9 @@ on post-fs-data
     #Create FTM_AP dir for factory test
     mkdir /data/FTM_AP 0775 system system
 
+    #Make MTU adjusting
+    write /proc/sys/net/ipv4/tcp_mtu_probing 1
+
 service nqnfcinfo /vendor/bin/nqnfcinfo
     class late_start
     group nfc

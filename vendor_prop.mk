@@ -73,7 +73,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qcom.ad.calib.data=/system/etc/calib.cfg \
     ro.qcom.ad.sensortype=2 \
     sdm.perf_hint_window=50 \
-    vendor.display.enable_default_color_mode=1
+    vendor.display.enable_default_color_mode=0
 
 # Displayfeature
 #PRODUCT_PROPERTY_OVERRIDES += \
@@ -153,6 +153,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.core_ctl_min_cpu=2 \
     ro.vendor.qti.core_ctl_max_cpu=4
 
+# QTI services - Enable b-services aging propagation
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.sys.fw.bservice_enable=true
+
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     DEVICE_PROVISIONED=1 \
@@ -205,7 +209,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Security Patch Level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.security_patch=2018-06-01
+    ro.vendor.build.security_patch=2018-08-01
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \

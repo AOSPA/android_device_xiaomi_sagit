@@ -155,6 +155,14 @@ echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
 echo 801 > /sys/module/lowmemorykiller/parameters/adj_max_shift
 echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
 
+# set lmk minfree for MemTotal greater than 6G
+arch_type=`uname -m`
+MemTotalStr=`cat /proc/meminfo | grep MemTotal`
+MemTotal=${MemTotalStr:16:8}
+if [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 5505024 ]; then
+    echo "18432,23040,27648,32256,85296,120640" > /sys/module/lowmemorykiller/parameters/minfree
+fi
+
 # Set read_ahead_kb to 128 and scheduler to cfq
 for block_device in /sys/block/*
 do
