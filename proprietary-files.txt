@@ -1553,13 +1553,12 @@ lib64/sensors.hal.tof.so
 lib/libqmi_cci_system.so
 lib/libsensor_test.so:vendor/lib/libsensor_test.so
 lib/sensors.hal.tof.so
-vendor/bin/sensors.qcom
+vendor/bin/sensors.qti|81e54c63b09949e47fb9b804be0c0ef26b862944
 vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sensor_def_qcomdev.conf
 -vendor/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar
 vendor/lib64/hw/activity_recognition.msm8998.so
-vendor/lib64/libsensor1.so
-vendor/lib64/libsensor1.so
+vendor/lib64/libsensor1.so|303ba20ff2dbf77b79bdb6f4d48c171d756840da
 vendor/lib64/libsensor_reg.so
 vendor/lib64/libsensor_user_cal.so
 vendor/lib64/libsns_low_lat_stream_stub.so
@@ -1567,8 +1566,7 @@ vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 vendor/lib/hw/activity_recognition.msm8998.so
-vendor/lib/libsensor1.so
-vendor/lib/libsensor1.so
+vendor/lib/libsensor1.so|a4b11adff7de3bea459850bae644424c97effcd3
 vendor/lib/libsensor_reg.so
 vendor/lib/libsensor_user_cal.so
 vendor/lib/libsns_low_lat_stream_stub.so

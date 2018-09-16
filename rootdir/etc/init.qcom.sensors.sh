@@ -31,33 +31,13 @@
 #
 start_sensors()
 {
+    chmod -h 664 /persist/sensors/sensors_settings
+    chown -h -R system.system /persist/sensors
+    start vendor.sensors.qti
+
+    # Only for SLPI
     if [ -c /dev/msm_dsps -o -c /dev/sensors ]; then
-	if [ ! -d /persist/sensors ]
-	then
-	    mkdir /persist/sensors
-	fi
-	chmod 0775 /persist/sensors
-	chown sensors.sensors /persist/sensors
-
-	if [ ! -f /persist/sensors/sensors_settings ]; then
-	   echo 1 > /persist/sensors/sensors_settings
-	fi
-	VALUE=`cat /persist/sensors/sensors_settings` 2> /dev/null
-	if [ "$VALUE" != "1" -a "$VALUE" != "0" ]; then
-	    echo 1 > /persist/sensors/sensors_settings
-	fi
-	chmod 0664 /persist/sensors/sensors_settings
-	chown system.root /persist/sensors/sensors_settings
-
-	chcon -R u:object_r:sensors_persist_file:s0 /persist/sensors
-
-	mkdir -p /data/misc/sensors
-	chmod 0775 /data/misc/sensors
-
-	chown system:system /persist/PRSensorData.txt
-	chmod 0600 /persist/PRSensorData.txt
-	chcon u:object_r:sensors_persist_file:s0 /persist/PRSensorData.txt
-	start sensors
+        start vendor.sensors
     fi
 }
 
