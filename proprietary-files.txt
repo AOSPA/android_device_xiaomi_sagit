@@ -1,21 +1,21 @@
-# ADSP
-vendor/bin/adsprpcd
-vendor/lib64/libadsp_default_listener.so
-vendor/lib64/libadsprpc.so
-vendor/lib64/libcdsprpc.so
-vendor/lib64/libfastcvadsp_stub.so
-vendor/lib64/libfastcvopt.so
-vendor/lib64/libmdsprpc.so
-vendor/lib64/libsdsprpc.so
-vendor/lib/libadsp_default_listener.so
-vendor/lib/libadsp_hvx_callback_skel.so
-vendor/lib/libadsp_hvx_stub.so
-vendor/lib/libadsprpc.so
-vendor/lib/libcdsprpc.so
-vendor/lib/libfastcvadsp_stub.so
-vendor/lib/libfastcvopt.so
-vendor/lib/libmdsprpc.so
-vendor/lib/libsdsprpc.so
+# ADSP - lake LA.UM.7.2.r1-04400-sdm660.0
+vendor/bin/adsprpcd|8b439846f016decb7519e5fd5cb2c86e192af036
+vendor/lib64/libadsp_default_listener.so|d28ea3a0509c13ff75c700efe1107bb2d2481eb6
+vendor/lib64/libadsprpc.so|c9570fb557f1b5174661c017fb4ad91de4104746
+vendor/lib64/libcdsprpc.so|9b548eb72a78e0bff0c47c06da7141bba91befb6
+vendor/lib64/libfastcvadsp_stub.so|0cbdc83819780d8aa7cb8707633439db330b655d
+vendor/lib64/libfastcvopt.so|bdba7dd5e23cad774937411ada5833aa31f58ab3
+vendor/lib64/libmdsprpc.so|ad3396abbc6ed1e7d0abc7c82902c4fe5d5f3486
+vendor/lib64/libsdsprpc.so|f4b01e1c88e95831196b4c800ccef8c93c623048
+vendor/lib/libadsp_default_listener.so|ca63c1b2c34bbde74c2b1fc6009ca244a1ffa535
+vendor/lib/libadsp_hvx_callback_skel.so|dc7080c68699f69f76260891ebcedcd68a093d40
+vendor/lib/libadsp_hvx_stub.so|4fa14ca235ace82551549b571f767f475fbf4b67
+vendor/lib/libadsprpc.so|a5ad80b40d9d38ca414736224c67843e3bf8c135
+vendor/lib/libcdsprpc.so|7e7418712323c0ecbb330f01d44b9e72f983b0e4
+vendor/lib/libfastcvadsp_stub.so|7811d12d68ec3f9fcbd05f55264b6dcec61bc75b
+vendor/lib/libfastcvopt.so|af4cb8faab0bf72db3f0a1b703e80defb2f0b706
+vendor/lib/libmdsprpc.so|a3847c9c6c3c488be095fbdbbb3346dd39a7e36b
+vendor/lib/libsdsprpc.so|94d13d7fa8d35ef68ac6c0b2883a3e69536a2fa3
 
 # ADSP modules
 vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so
