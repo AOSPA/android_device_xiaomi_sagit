@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014, 2017 The  Linux Foundation. All rights reserved.
+ * Copyright (C) 2014, 2017-2018 The  Linux Foundation. All rights reserved.
  * Not a contribution
  * Copyright (C) 2008 The Android Open Source Project
  *
@@ -19,7 +19,8 @@
 
 // #define LOG_NDEBUG 0
 
-#include <cutils/log.h>
+#include <log/log.h>
+#include <cutils/properties.h>
 
 #include <stdint.h>
 #include <stdlib.h>
