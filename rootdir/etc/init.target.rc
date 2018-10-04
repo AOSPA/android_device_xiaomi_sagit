@@ -49,6 +49,10 @@ on init
     # Goodix fingerprint
     chown system system /dev/goodix_fp
 
+    # Hack for oreo camera blobs
+    mount none /system/lib/libbinder.so /system/lib/vndk-28/libbinder.so bind
+    mount none /system/lib/libcutils.so /system/lib/vndk-sp-28/libcutils.so bind
+
 on fs
     wait /dev/block/platform/soc/1da4000.ufshc
     symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
