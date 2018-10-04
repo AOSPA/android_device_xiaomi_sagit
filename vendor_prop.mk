@@ -42,7 +42,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.cne.feature=1
+    persist.vendor.cne.feature=1
 
 # Coresight
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -50,9 +50,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Data modules
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.data.mode=concurrent \
+    persist.vendor.data.mode=concurrent \
     persist.data.netmgrd.qos.enable=true \
-    ro.use_data_netmgrd=true
+    ro.vendor.use_data_netmgrd=true
 
 # Dalvik heap
 PRODUCT_PROPERTY_OVERRIDES += \

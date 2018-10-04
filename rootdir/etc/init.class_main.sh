@@ -32,9 +32,7 @@
 #
 baseband=`getprop ro.baseband`
 sgltecsfb=`getprop persist.vendor.radio.sglte_csfb`
-# TODO: Update blobs
-#datamode=`getprop persist.vendor.data.mode`
-datamode=`getprop persist.data.mode`
+datamode=`getprop persist.vendor.data.mode`
 rild_status=`getprop init.svc.ril-daemon`
 vendor_rild_status=`getprop init.svc.vendor.ril-daemon`
 
