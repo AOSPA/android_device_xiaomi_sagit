@@ -329,9 +329,7 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # Performance
-#PRODUCT_BOOT_JARS += \
-    QPerformance \
-    UxPerformance
+-include vendor/qcom/common/qti-vendor.mk
 
 # Power
 PRODUCT_PACKAGES += \
