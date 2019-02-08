@@ -132,6 +132,7 @@ PRODUCT_PACKAGES += \
     init.leds.sh \
     init.panel_info.sh \
     init.qcom.post_boot.sh \
+    init.qti.can.sh \
     init.qti.qseecomd.sh
 
 # Common init scripts
