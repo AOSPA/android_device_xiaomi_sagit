@@ -322,14 +322,9 @@ on post-fs-data
     chown radio radio /data/vendor/connectivity
 
     # Create directory used by audio subsystem
-    # TODO: Update blobs
-    mkdir /data/vendor/misc/audio 0770 audio audio
     mkdir /data/vendor/audio 0770 audio audio
 
     # Create directory for audio delta files
-    # TODO: Update blobs
-    mkdir /data/vendor/misc/audio/acdbdata 0770 media audio
-    mkdir /data/vendor/misc/audio/acdbdata/delta 0770 media audio
     mkdir /data/vendor/audio/acdbdata 0770 media audio
     mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
 
@@ -380,8 +375,6 @@ on post-fs-data
     chown system system /data/fota
 
     # Create /data/time folder for time-services
-    # TODO: Update blobs
-    mkdir /data/time/ 0700 system system
     mkdir /data/vendor/time/ 0700 system system
 
     setprop vold.post_fs_data_done 1
@@ -390,9 +383,6 @@ on post-fs-data
     # mkdir /data/data/media 0770 media media
 
     #Create FM dir for patchdownloader
-    # TODO: Update blobs
-    mkdir /data/misc/fm 0770 system system
-    chmod 0770 /data/misc/fm
     mkdir /data/vendor/fm 0770 system system
     chmod 0770 /data/vendor/fm
 
@@ -400,11 +390,6 @@ on post-fs-data
     mkdir /data/vendor/perfd 0770 root system
     chmod 2770 /data/vendor/perfd
     rm /data/vendor/perfd/default_values
-
-    # NFC local data and nfcee xml storage
-    # TODO: Update blobs
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
 
     mkdir /data/vendor/secure_element 0777 system system
 
@@ -624,13 +609,6 @@ on property:vendor.wc_transport.start_hci=true
     start vendor.start_hci_filter
 
 on property:vendor.wc_transport.start_hci=false
-    stop vendor.start_hci_filter
-
-# TODO: Update blobs
-on property:wc_transport.start_hci=true
-    start vendor.start_hci_filter
-
-on property:wc_transport.start_hci=false
     stop vendor.start_hci_filter
 
 service vendor.start_hci_filter /vendor/bin/wcnss_filter

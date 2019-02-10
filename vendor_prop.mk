@@ -4,8 +4,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.adm.buffering.ms=6 \
     audio.offload.min.duration.secs=30 \
     audio.usb.disable.sidetone=false \
-    persist.audio.dirac.speaker=true \
-    persist.audio.speaker.dualmode=true \
+    persist.vendor.audio.aanc.enable=true \
+    persist.vendor.audio.hac.enable=false \
+    persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24 \
     ro.audio.nojack=true \
     ro.audio.soundtrigger=none \
     ro.audio.soundtrigger.lowpower=false \
@@ -31,7 +32,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.bluetooth.soc=cherokee \
     ro.bluetooth.library_name=libbluetooth_qti.so \
     persist.vendor.btstack.enable.splita2dp=false \
-    persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac
+    persist.vendor.btstack.a2dp_offload_cap=false
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -133,10 +134,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_large_cache_width=2048 \
     ro.hwui.text_large_cache_height=4096
 
+# IOP
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.iop.enable_uxe=0 \
+    vendor.iop.enable_prefetch_ofr=0
+
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
     media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
+    media.stagefright.audio.deep=true \
     media.stagefright.enable-aac=true \
     media.stagefright.enable-http=true \
     media.stagefright.enable-player=true \

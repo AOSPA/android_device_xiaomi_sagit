@@ -413,15 +413,15 @@ then
     file=/sys/class/graphics/fb0/mdp/caps
     if [ -f "$file" ]
     then
+        setprop vendor.gralloc.disable_ubwc 1
         # TODO: Update blobs
-        #setprop vendor.gralloc.disable_ubwc 1
         setprop debug.gralloc.gfx_ubwc_disable 1
         cat $file | while read line; do
           case "$line" in
                     *"ubwc"*)
                     setprop vendor.gralloc.enable_fb_ubwc 1
+                    setprop vendor.gralloc.disable_ubwc 0
                     # TODO: Upate blobs
-                    #setprop vendor.gralloc.disable_ubwc 0
                     setprop debug.gralloc.gfx_ubwc_disable 0
                 esac
         done

@@ -356,7 +356,14 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    android.hardware.radio@1.0 \
+    android.hardware.radio@1.1 \
+    android.hardware.radio@1.2 \
+    android.hardware.radio.config@1.0 \
+    android.hardware.radio.deprecated@1.0 \
+    android.hardware.secure_element@1.0 \
     libprotobuf-cpp-full \
+    libprotobuf-cpp-full-rtti \
     librmnetctl \
     libxml2
 
@@ -396,6 +403,7 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0 \
     android.hardware.wifi@1.0-service \
     libqsap_sdk \
     libwpa_client \
@@ -412,3 +420,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
+
+# WFD
+PRODUCT_PACKAGES += \
+    libnl_32
+
+PRODUCT_BOOT_JARS += \
+    WfdCommon
