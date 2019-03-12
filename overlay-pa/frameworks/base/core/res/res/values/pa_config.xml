@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2017, The Paranoid Android Project
+** Copyright 2017-2019, The Paranoid Android Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -51,15 +51,7 @@
          config to 7. -->
     <integer name="config_deviceHardwareKeys">19</integer>
 
-    <!-- Does the notification LED support multiple colors?
-         Used to decide if the user can change the colors
-    <bool name="config_multiColorNotificationLed">false</bool>-->
-
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option
-    <bool name="config_intrusiveBatteryLed">true</bool>-->
-
-    <!-- Does the battery LED support multiple colors?
-         Used to decide if the user can change the colors
-    <bool name="config_multiColorBatteryLed">false</bool>-->
+    <!-- Internal default to navigation bar value -->
+    <bool name="config_defaultToNavigationBar">false</bool>
 
 </resources>
